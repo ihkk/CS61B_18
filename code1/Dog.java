@@ -2,6 +2,7 @@
 public class Dog {
     // Instance variable
     public int weightInPounds;
+    public static String company = "ABC";
 
     // One integer Constructor for dogs.
     public Dog(int w) {
@@ -20,5 +21,19 @@ public class Dog {
         } else {
             System.out.println("Woolf!");
         }
+    }
+
+    public static Dog maxDog(Dog d1, Dog d2) {
+        if (d1.weightInPounds > d2.weightInPounds) {
+            return d1;
+        }
+        return d2;
+    }
+
+    public Dog maxDog(Dog d2) {
+        if (this.weightInPounds > d2.weightInPounds) {
+            return this;
+        }
+        return d2;
     }
 }
