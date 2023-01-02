@@ -21,4 +21,12 @@ public class Body {
         imgFileName = b.imgFileName;
     };
 
+    public double calcDistance(Body that) {
+        return Math.sqrt(Math.pow((this.xxPos - that.xxPos), 2) + Math.pow((this.yyPos - that.yyPos), 2));
+    };
+
+    public double calcForceExertedBy(Body that) {
+        return 1.334 * Math.pow(10, -9) * this.mass * that.mass / this.calcDistance(that);
+    };
+
 }
