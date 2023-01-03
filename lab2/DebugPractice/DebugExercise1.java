@@ -4,7 +4,7 @@
  */
 public class DebugExercise1 {
     public static int divideThenRound(int top, int bottom) {
-        float quotient = (float) top / bottom;
+        int quotient = top / bottom;
         int result = Math.round(quotient);
         return result;
     }
@@ -18,11 +18,11 @@ public class DebugExercise1 {
         int t2 = 9;
         int b2 = 4;
         int result2 = divideThenRound(t2, b2);
-        System.out.println("round(" + t2 + "/" + b2 + ")=" + result2);
+        System.out.println("round(" + t + "/" + b + ")=" + result2);
 
         int t3 = 3;
         int b3 = 4;
         int result3 = divideThenRound(t3, b3);
-        System.out.println("round(" + t3 + "/" + b3 + ")=" + result3);
+        System.out.println("round(" + t + "/" + b + ")=" + result3);
     }
 }
