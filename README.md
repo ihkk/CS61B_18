@@ -1,6 +1,6 @@
 # CS61B 2018
 
-This are my codes of UCB's CS 61B (Spring 2018)
+These are my codes of UCB's CS 61B (Spring 2018)
 
 ## Links:
 
