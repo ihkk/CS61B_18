@@ -1,88 +1,50 @@
+ /** An SLList is a list of integers, which hides the terrible truth
+   * of the nakedness within. */
+public class SLList<LochNess> {	
+	private class StuffNode {
+		public LochNess item;
+		public StuffNode next;
 
-// An SLList is a list of integers which hides the terrible truth of the nakedness within.
-public class SLList {
-    // to prevent code in other classes from using members of this class
-    // the first item is at sentinel.next
-    private IntNode sentinel;
-    private int size;
+		public StuffNode(LochNess i, StuffNode n) {
+			item = i;
+			next = n;
+		}
+	} 
 
-    // nested class
-    // if IntNode never looks for any details in SLList class, then can add "static"
-    // meaning "never looks outwards"
-    private static class IntNode {
-        public int item;
-        public IntNode next;
+	private StuffNode first;
+	private int size;
 
-        public IntNode(int i, IntNode n) {
-            item = i;
-            next = n;
-        }
-    }
+	public SLList(LochNess x) {
+		first = new StuffNode(x, null);
+		size = 1;
+	}
 
-    // creates an empty SLList
-    public SLList() {
-        sentinel = new IntNode(63, null);
-        size = 0;
-    }
+ 	/** Adds x to the front of the list. */
+ 	public void addFirst(LochNess x) {
+ 		first = new StuffNode(x, first);
+ 		size += 1;
+ 	}
 
-    public SLList(int x) {
-        sentinel = new IntNode(63, null);
-        sentinel.next = new IntNode(x, null);
-        size = 1;
-    }
+ 	/** Returns the first item in the list. */
+ 	public LochNess getFirst() {
+ 		return first.item; 		
+ 	}
 
-    // adds x to the front of the list
-    public void addFirst(int x) {
-        sentinel.next = new IntNode(x, sentinel.next);
-        size += 1;
-    }
+ 	/** Adds an item to the end of the list. */
+ 	public void addLast(LochNess x) {
+ 		size += 1;
 
-    // get the first element
-    public int getFirst() {
-        return sentinel.next.item;
-    }
+ 		StuffNode p = first;
 
-    public int size_method() {
-        IntNode tmp = sentinel.next;
-        int size = 0;
-        while (tmp != null) {
-            size += 1;
-            tmp = tmp.next;
-        }
-        return size;
-    }
+ 		/* Move p until it reaches the end of the list. */
+ 		while (p.next != null) {
+ 			p = p.next;
+ 		}
 
-    public int size() {
-        return size;
-    }
+ 		p.next = new StuffNode(x, null);
+ 	}
 
-    public void addLast(int n) {
-        size += 1;
-        IntNode tmp = sentinel;
-        while (tmp.next != null) {
-            tmp = tmp.next;
-        }
-        tmp.next = new IntNode(n, null);
-    }
-
-    public void print() {
-        IntNode tmp = sentinel.next;
-        while (tmp != null) {
-            System.out.print(tmp.item + " ");
-            tmp = tmp.next;
-        }
-        return;
-    }
-
-    public static void main(String[] args) {
-        // creates a list of one integer, namely 10
-        SLList L = new SLList();
-        L.addLast(6);
-        L.addFirst(10);
-        L.addFirst(5);
-        L.addFirst(25);
-        System.out.println(L.getFirst());
-        System.out.println(L.size());
-        L.print();
-    }
+ 	public int size() {
+ 		return size;
+ 	}
 }
