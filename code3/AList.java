@@ -1,19 +1,19 @@
-public class AList {
-    private int[] items;
+public class AList<Item> {
+    private Item[] items;
     private int size;
 
     public AList() {
-        items = new int[100];
+        items = (Item[]) new Object[100];
         size = 0;
     }
 
     private void resize(int capacity) {
-        int[] a = new int[capacity];
+        Item[] a = (Item[]) new Object[capacity];
         System.arraycopy(items, 0, a, 0, size);
         items = a;
     }
 
-    public void addLast(int x) {
+    public void addLast(Item x) {
         if (size == items.length) {
             resize(size * 2);
         }
@@ -21,11 +21,11 @@ public class AList {
         size += 1;
     }
 
-    public int getLast() {
+    public Item getLast() {
         return items[size - 1];
     }
 
-    public int get(int i) {
+    public Item get(int i) {
         return items[i];
     }
 
@@ -33,14 +33,14 @@ public class AList {
         return size;
     }
 
-    public int removeLast() {
-        int x = getLast();
+    public Item removeLast() {
+        Item x = getLast();
         size -= 1;
         return x;
     }
 
     public static void main(String[] args) {
-        AList a = new AList();
+        AList<Integer> a = new AList<>();
         a.addLast(5);
         a.addLast(1);
         System.out.println(a.size);
